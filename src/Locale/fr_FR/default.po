@@ -1,0 +1,2 @@
+msgid "msg"
+msgstr "cakePHP language France."
