@@ -1,17 +1,16 @@
 <script src="<?php echo $this->request->webroot . "js/" ?>tinymce.min.js"></script>
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
-<?php echo $this->Form->create("Article"); ?>
+<?php echo $this->Form->create("Article",array('url'=>'/articles/edit/'.$id)); ?>
 <fieldset>
     <h2>Add Articles</h2>
     <?php
-    echo $this->Form->input("Title");
-    echo $this->Form->input("MapUrl");
-    echo $this->Form->input("Type");
-    echo $this->Form->input("MetaDes", array("id" => "des_meta"));
-    echo $this->Form->input("MetaKey", array("id" => "keys"));
-    echo $this->Form->input("Description", array("id" => "description"));
-//    echo $this->Form->input("File", array("type" => "file", "id" => "file"));
-    echo $this->Form->input("Content", array("type" => "textarea", "id" => "content_article"));
+    echo $this->Form->input("Title",['value'=>$title]);
+    echo $this->Form->input("MapUrl",['value'=>$mapUrl]);
+    echo $this->Form->input("Type",['value'=>$type]);
+    echo $this->Form->input("MetaDes", ['value'=>$meta_des]);
+    echo $this->Form->input("MetaKey",['value'=>$meta_keys]);
+    echo $this->Form->input("Description", ['value'=>$des_article]);
+    echo $this->Form->input("Content", array("type" => "textarea", "id" => "content_article",'value'=>$content));
     echo $this->Form->button('Submit');
     ?>
 </fieldset>
@@ -22,9 +21,10 @@ echo $this->Form->end();
     tinymce.init({
         selector: '#content_article',
         height: 500,
-        toolbar1: "newdocument | bold italic underline | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
+        
+        toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
         toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
-        toolbar3: "table  | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | visualchars visualblocks nonbreaking template pagebreak restoredraft",
+        toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | visualchars visualblocks nonbreaking template pagebreak restoredraft",
         content_css: [
             '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
             '//www.tinymce.com/css/codepen.min.css'],

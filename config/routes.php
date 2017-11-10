@@ -100,22 +100,25 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('cookie/read', ['controller' => 'Cookies', 'action' => 'read_cookie']);
     $routes->connect('cookie/check', ['controller' => 'Cookies', 'action' => 'check_cookie']);
     $routes->connect('cookie/delete', ['controller' => 'Cookies', 'action' => 'delete_cookie']);
-    $routes->connect('login',['controller'=>'Logins','action'=>'index']);
-    
+    $routes->connect('login', ['controller' => 'Logins', 'action' => 'index']);
+
     // example validate
-     $routes->connect('validation',['controller'=>'Valids','action'=>'index']);
-     // example upload
-      $routes->connect('/upload/add',['controller'=>'Uploads','action'=>'add']);
-      
-      $routes->connect('/articles/add',['controller'=>'Articles','action'=>'add']);
-      
-      // example tinymce
-      $routes->connect('/tinymce/add',['controller'=>'TinyMCE','action'=>'add']);
+    $routes->connect('validation', ['controller' => 'Valids', 'action' => 'index']);
+    // example upload
+    $routes->connect('/upload/add', ['controller' => 'Uploads', 'action' => 'add']);
+
+
+
+    // example tinymce
+    $routes->connect('/tinymce/add', ['controller' => 'TinyMCE', 'action' => 'add']);
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
      */
     $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
-
+//    $routes->connect('/articles/edit/*', ['controller' => 'Articles', 'action' => 'edit']);
+//    $routes->connect('/articles/view/*', ['controller' => 'Articles', 'action' => 'view']);
+    $routes->connect('/articles/add', ['controller' => 'Articles', 'action' => 'add']);
+//    $routes->connect('/articles/index', ['controller' => 'Articles', 'action' => 'index']);
 
     /**
      * Connect catchall routes for all controllers.

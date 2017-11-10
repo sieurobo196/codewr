@@ -16,8 +16,8 @@ $this->layout = false;
         <!-- for-mobile-apps -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="keywords" content="<?php echo "$keys"?>" />
-        <meta name="description" content="<?php echo "$des"?>" />
+        <meta name="keywords" content="<?php echo "$keys" ?>" />
+        <meta name="description" content="<?php echo "$des" ?>" />
         <!-- //for-mobile-apps -->
         <link href="<?php echo $this->request->webroot . "css/" ?>/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
         <link href="<?php echo $this->request->webroot . "css/" ?>/style.css" rel="stylesheet" type="text/css" media="all" />
@@ -46,6 +46,16 @@ $this->layout = false;
         <!-- start-smoth-scrolling -->
         <script type="text/javascript" src="<?php echo $this->request->webroot . "js" ?>/move-top.js"></script>
         <script type="text/javascript" src="<?php echo $this->request->webroot . "js" ?>/easing.js"></script>
+        <style>
+            .content-article{
+                padding: 5px;
+                font-family:Verdana,sans-serif;
+                line-height: 26px;
+            }
+            .content-article>ul {
+                padding-left: 25px;
+            }
+        </style>
     </head>
 
     <body>
@@ -122,7 +132,7 @@ $this->layout = false;
                         <nav class="wthree_nav">
                             <ul class="nav navbar-nav nav_1">
                                 <li class="act"><a href="index.html">Home</a></li>
-                                <li><a href="equity.html">JAVA</a></li>
+                                <!--<li><a href="equity.html">JAVA</a></li>-->
                                 <li><a href="equity.html">PHP</a></li>
                             </ul>
                         </nav>
@@ -136,15 +146,11 @@ $this->layout = false;
             <div class="container">
                 <div class="agileinfo_news_original_grids">
                     <div class="col-md-8 agileinfo_news_original_grids_left1">
-                        <h2>PHP Cơ bản</h2>
-                        <ul>
-                            <?php
-                            foreach ($results as $row):
-                                echo "<li><a href='" . $this->Url->build
-                                        (["controller" => "Articles", "action" => "view", $row->map_url]) . "'>".$row->title." </a></li>";
-                            endforeach;
-                            ?>
-                        </ul>
+                        <div><a href="<?php echo $this->Url->build(["controller" => "Articles", "action" => "edit", $id]); ?>">edit</a></div>
+                        <h2><?php echo "$article->title" ?></h2>
+                        <div class="content-article"><?php echo "$article->des_article" ?></div>
+                        <div class="content-article"><?php echo "$article->content" ?></div>
+
                     </div>
                     <div class="col-md-4 agileinfo_news_original_grids_right">
                         <div class="w3layouts_add_market">

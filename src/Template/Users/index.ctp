@@ -1,3 +1,9 @@
+<?php
+$d=strtotime("today");
+echo date("Y-m-d h:i:sa", $d) . "<br>";
+
+?>
+
 <a href = "add">Add User</a>
 <table>
    <tr>
