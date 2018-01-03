@@ -49,93 +49,26 @@ Router::scope('/', function (RouteBuilder $routes) {
      * its action called 'display', and we pass a param to select the view file
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
-//    $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
     // examples route and agr
-    $routes->connect('/', ['controller' => 'Tests', 'action' => 'index']);
-//    $routes->connect('tests/:arg1/:arg2', ['controller' => 'Tests', 'action' =>
-//        'index'], ['pass' => ['arg1', 'arg2']]);
-    // example generates url
-    $routes->connect('/generate', ['controller' => 'Generates', 'action' => 'index']);
-//    example redirect url
-    $routes->connect('/generate2', ['controller' => 'Tests', 'action' => 'index']);
-    $routes->redirect('/generate1', 'http://tutorialspoint.com/');
-    $routes->connect('/generate_url', ['controller' => 'Generates', 'action' => 'index']);
-    // example controller
-    $routes->connect('/redirectcontroller', ['
-         controller' => 'Generates', 'action' => 'index']);
-
-    $routes->connect('/redirectcontroller2', ['
-         controller' => 'Redirects', 'action' => 'action2']);
-    // example extends
-    $routes->connect('extend', ['controller' => 'Extends', 'action' => 'index']);
-    // example element
-    $routes->connect('/elementexample', ['controller' => 'Elems', 'action' => 'index']);
+    $routes->connect('/', ['controller' => 'Articles', 'action' => 'index']);
+    $routes->connect('/*', ['controller' => 'Articles', 'action' => 'detail']);
+    $routes->connect('/view/*', ['controller' => 'Articles', 'action' => 'view']);
+    $routes->connect('/add', ['controller' => 'Articles', 'action' => 'add']);
+    $routes->connect('/edit/*', ['controller' => 'Articles', 'action' => 'edit']);
+    
     // example working with database
     $routes->connect('/users/add', ['controller' => 'Users', 'action' => 'add']);
     $routes->connect('/users', ['controller' => 'Users', 'action' => 'index']);
-    $routes->connect('/users/edit', ['controller' => 'Users', 'action' => 'edit']);
+    $routes->connect('/users/edit/*', ['controller' => 'Users', 'action' => 'edit']);
+    $routes->connect('/users/delete/*', ['controller' => 'Users', 'action' => 'edit']);
+
+    
     // example authenticate 
     $routes->connect('/auth', ['controller' => 'Authexs', 'action' => 'index']);
     $routes->connect('/login', ['controller' => 'Authexs', 'action' => 'login']);
     $routes->connect('/logout', ['controller' => 'Authexs', 'action' => 'logout']);
-    // example error
-    $routes->connect('/exception/:arg1/:arg2', ['controller' => 'Exps', 'action' => 'index'], ['pass' => ['arg1', 'arg2']]);
-    // example log
-    $routes->connect('logex', ['controller' => 'Logexs', 'action' => 'index']);
-    //example form handling
-    $routes->connect('register', ['controller' => 'Registrations', 'action' => 'index']);
-    // example multi languages
-    $routes->connect('locale', ['controller' => 'Localizations', 'action' => 'index']);
-    // example email
-    $routes->connect('/email', ['controller' => 'Emails', 'action' => 'index']);
-    // session
-    $routes->connect('/sessionobject', ['controller' => 'Sessions', 'action' => 'index']);
-    $routes->connect('/sessionread', ['controller' => 'Sessions', 'action' => 'retrieve_session_data']);
-    $routes->connect('/sessionwrite', ['controller' => 'Sessions', 'action' => 'write_session_data']);
-    $routes->connect('/sessioncheck', ['controller' => 'Sessions', 'action' => 'check_session_data']);
-    $routes->connect('/sessiondelete', ['controller' => 'Sessions', 'action' => 'delete_session_data']);
-    $routes->connect('/sessiondestroy', ['controller' => 'Sessions', 'action' => 'destroy_session_data']);
-    //example cookie
-    $routes->connect('cookie/write', ['controller' => 'Cookies', 'action' => 'write_cookie']);
-    $routes->connect('cookie/read', ['controller' => 'Cookies', 'action' => 'read_cookie']);
-    $routes->connect('cookie/check', ['controller' => 'Cookies', 'action' => 'check_cookie']);
-    $routes->connect('cookie/delete', ['controller' => 'Cookies', 'action' => 'delete_cookie']);
-    $routes->connect('login', ['controller' => 'Logins', 'action' => 'index']);
-
-    // example validate
-    $routes->connect('validation', ['controller' => 'Valids', 'action' => 'index']);
-    // example upload
-    $routes->connect('/upload/add', ['controller' => 'Uploads', 'action' => 'add']);
-
-
-
-    // example tinymce
-    $routes->connect('/tinymce/add', ['controller' => 'TinyMCE', 'action' => 'add']);
-    /**
-     * ...and connect the rest of 'Pages' controller's URLs.
-     */
-    $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
-//    $routes->connect('/articles/edit/*', ['controller' => 'Articles', 'action' => 'edit']);
-//    $routes->connect('/articles/view/*', ['controller' => 'Articles', 'action' => 'view']);
-    $routes->connect('/articles/add', ['controller' => 'Articles', 'action' => 'add']);
-//    $routes->connect('/articles/index', ['controller' => 'Articles', 'action' => 'index']);
-
-    /**
-     * Connect catchall routes for all controllers.
-     *
-     * Using the argument `DashedRoute`, the `fallbacks` method is a shortcut for
-     *    `$routes->connect('/:controller', ['action' => 'index'], ['routeClass' => 'DashedRoute']);`
-     *    `$routes->connect('/:controller/:action/*', [], ['routeClass' => 'DashedRoute']);`
-     *
-     * Any route class can be used with this method, such as:
-     * - DashedRoute
-     * - InflectedRoute
-     * - Route
-     * - Or your own route class
-     *
-     * You can remove these routes once you've connected the
-     * routes you want in your application.
-     */
+   
+    
     $routes->fallbacks(DashedRoute::class);
 });
 
