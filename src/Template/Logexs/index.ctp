@@ -1,1 +1,0 @@
-Something is written in log file. Check log file logs\debug.log

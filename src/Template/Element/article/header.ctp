@@ -1,0 +1,63 @@
+<?php
+
+$this->layout = false;
+?>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title><?php echo "$title" ?></title>
+        <!-- for-mobile-apps -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="keywords" content="<?php echo "$keys"?>" />
+        <meta name="description" content="<?php echo "$des"?>" />
+        <!-- //for-mobile-apps -->
+        <link href="<?php echo $this->request->webroot . "css/" ?>/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="<?php echo $this->request->webroot . "css/" ?>/style.css" rel="stylesheet" type="text/css" media="all" />
+        <link class="include" rel="stylesheet" type="text/css" href="<?php echo $this->request->webroot . "css/" ?>/jquery.jqplot.css" />
+        <!-- calender -->
+        <link type="text/css" href="<?php echo $this->request->webroot . "css/" ?>/jquery.simple-dtpicker.css" rel="stylesheet" />
+         <link rel="shortcut icon" type="image/x-icon" href="<?php echo $this->request->webroot; ?>images/1.png">
+        <!-- //calender -->
+        <!-- different-chart-bar -->
+        <link rel="stylesheet" href="<?php echo $this->request->webroot . "css/" ?>/chart.min.css">
+        <link rel="stylesheet" href="<?php echo $this->request->webroot . "css/" ?>/article.css">
+        <!-- //different-chart-bar -->
+        <!-- font-awesome icons -->
+        <link rel="stylesheet" href="<?php echo $this->request->webroot . "css/" ?>/font-awesome.min.css" />
+        <!-- //font-awesome icons -->
+        <!-- js -->
+        <script src="<?php echo $this->request->webroot . "js" ?>/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="<?php echo $this->request->webroot . "js" ?>/jquery.marquee.min.js"></script>
+        <!-- js -->
+        <!-- pop-up -->
+        <link href="<?php echo $this->request->webroot . "css/" ?>/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
+        <!-- //pop-up -->
+        <!-- left-chart -->
+        <script src="<?php echo $this->request->webroot . "js" ?>/jquery.flot.min.js" type="text/javascript"></script> 
+        <script src="<?php echo $this->request->webroot . "js" ?>/jquery.flot.animator.min.js" type="text/javascript"></script>
+        <!-- //left-chart -->
+        <link href="//fonts.googleapis.com/css?family=Muli:300,300i,400,400i" rel="stylesheet">
+        <!-- start-smoth-scrolling -->
+        <script type="text/javascript" src="<?php echo $this->request->webroot . "js" ?>/move-top.js"></script>
+        <script type="text/javascript" src="<?php echo $this->request->webroot . "js" ?>/easing.js"></script>
+    </head>
+
+    <body>
+        <!-- header -->
+        <div class="header">
+            <div class="w3ls_header_middle">
+                <div class="container">
+                    <div class="agileits_logo">
+                        <h1><a href="<?php echo $this->Url->build(["controller" => "Articles", "action" => "index"]) ?>"><span>CodeWR</span>.com</a></h1>
+                    </div>
+                    <div class="agileits_search">
+<!--                        <form action="#" method="post">
+                            <input name="Search" type="text" placeholder="Search" required="">
+                            <input type="submit" value="Search">
+                        </form>-->
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+        </div>

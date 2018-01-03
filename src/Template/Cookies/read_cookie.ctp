@@ -1,1 +1,0 @@
-The value of the cookie is: <?php echo $cookie_val; ?> 

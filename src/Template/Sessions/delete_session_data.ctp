@@ -1,1 +1,0 @@
-Data deleted from session.

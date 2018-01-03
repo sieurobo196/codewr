@@ -10,28 +10,26 @@
         <div class="agileinfo_news_original_grids">
             <div class="col-md-8 agileinfo_news_original_grids_left1">
 
-                <?php foreach ($listType as $rowType): ?>
-                    <div class="list-article-details">
 
-                        <div class="row article-type"><?php echo $rowType->type ?></div>
-                        <div class="row article-block">
+                <div class="list-article-details">
 
-                            <?php
-                            foreach ($results as $row):
-                                if ($row->type == $rowType->type) {
-                                    ?>
-                                    <div class="col-md-6  article-title">-<a href="<?php echo $this->Url->build(["controller" => "Articles", "action" => "view",$row->type, $row->map_url]) ?>" />
-                                        <?php echo $row->title ?> </a></div>
-                                    <?php
-                                }
-                            endforeach;
-                            ?>
+                    <div class="row article-type"><?php echo $title ?></div>
+                    <div class="row article-block">
 
-                        </div>
+                        <?php
+                        foreach ($results as $row):
+                            if ($row->type == $title) {
+                                ?>
+                                <div class="col-md-6  article-title">-<a href="<?php echo $this->Url->build(["controller" => "Articles", "action" => "view", $row->type, $row->map_url]) ?>" />
+                                    <?php echo $row->title ?> </a></div>
+                                <?php
+                            }
+                        endforeach;
+                        ?>
+
                     </div>
-                    <?php
-                endforeach;
-                ?>
+                </div>
+
 
 
             </div>
