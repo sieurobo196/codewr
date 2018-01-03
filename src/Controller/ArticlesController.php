@@ -8,8 +8,14 @@ use Cake\Datasource\ConnectionManager;
 use Cake\Auth\DefaultPasswordHasher;
 use Cake\Log\Log;
 use Cake\I18n\Time;
+use Cake\Event\Event;
 
 class ArticlesController extends AppController {
+
+    public function beforeFilter(Event $event) {
+        parent::beforeFilter($event);
+        $this->Auth->allow(["index", "view", "detail"]);
+    }
 
     public function add() {
         $this->log("start upload file add", 'info');
@@ -65,22 +71,83 @@ class ArticlesController extends AppController {
 
     public function index() {
         $listArticles = TableRegistry::get('Articles');
-        $query = $listArticles->find();
+        $query = $listArticles->find()->order(["createdDate" => "DESC"]);
+        $listNew = $listArticles->find()->order(["createdDate" => "DESC"])->limit(20);
+        $listType = $listArticles->find()->select(["type"])->group("type");
+
         $this->set("results", $query);
+        $this->set("listType", $listType);
+        $this->set("listArticleNew", $listNew);
         $this->set("title", "CodeWR Online Web Example");
         $this->set("keys", "PHP ,CakePHP");
         $this->set("des", "CodeWR Web Example");
+        $this->set("activeMenu", "index");
     }
 
-    public function view($mapUrl) {
+    public function view($type, $mapUrl) {
         $this->log("call view $mapUrl", "info");
         $articles = TableRegistry::get('Articles');
         $article = $articles->find()->where(['map_url = "' . $mapUrl . '"'])->first();
-        $this->set("article", $article);
-        $this->set("title", $article->title);
-        $this->set("keys", $article->meta_keys);
-        $this->set("des", $article->meta_des);
-        $this->set("id", $article->id);
+        if (empty($article)) {
+            $this->redirect(['controller' => 'Articles', 'action' => 'index']);
+        } else {
+            $listType = $articles->find()->select(["type"])->group("type");
+            $listNew = $articles->find()->where(["type" => $type])->order(["createdDate" => "DESC"])->limit(10);
+            $keys = $article->meta_keys;
+
+            $arrayKeys = explode(",", $keys);
+            $listRelated = $articles->find();
+            foreach ($arrayKeys as $key) {
+                $listRelated->orWhere(["meta_keys" => $key]);
+            }
+            $listRelated->orWhere(["type" => $type])->limit(10);
+            $this->set("listType", $listType);
+            $this->set("listArticleNew", $listNew);
+            $this->set("listRelated", $listRelated);
+
+            $this->set("article", $article);
+            $this->set("title", $article->title);
+            $this->set("keys", $keys);
+            $this->set("des", $article->meta_des);
+            $this->set("id", $article->id);
+            $this->set("activeMenu", $type);
+            $view = $article->view;
+            $view++;
+            $article->view = $view;
+            if ($articles->save($article)) {
+                
+            } else {
+                $this->log("update view fail" + $view, "info");
+            }
+        }
+    }
+
+    public function detail($type) {
+        $this->log("call detail $type", "info");
+        $listArticles = TableRegistry::get('Articles');
+        $listArticle = $listArticles->find()->where(["type" => $type])->order(["createdDate" => "DESC"]);
+        $listNew = $listArticles->find()->where(["type" => $type])->order(["createdDate" => "DESC"])->limit(10);
+        $listType = $listArticles->find()->select(["type"])->group("type");
+        if(empty($listArticle)){
+            $this->log("empty ","info");
+        }
+        $count = 0;
+        foreach ($listArticle as $article) {
+            $count++;
+        }
+        $this->log("count " . $count, "info");
+        if ($count == 0) {
+
+            $this->redirect(['controller' => 'Articles', 'action' => 'index']);
+        } else {
+            $this->set("results", $listArticle);
+            $this->set("listType", $listType);
+            $this->set("listArticleNew", $listNew);
+            $this->set("title", $type);
+            $this->set("keys", $type);
+            $this->set("des", $type);
+            $this->set("activeMenu", $type);
+        }
     }
 
     public function edit($id) {
@@ -96,17 +163,17 @@ class ArticlesController extends AppController {
             $articles = TableRegistry::get('Articles');
             $article = $articles->get($id);
             $article->title = $title;
-            $article->map_url=$mapUrl;
-            $article->meta_des=$description_meta;
-            $article->meta_keys=$keywords;
-            $article->des_article=$description;
-            $article->content=$content_article;
-            $article->type=$type;
-            $article->updatedDate=$newDate;
+            $article->map_url = $mapUrl;
+            $article->meta_des = $description_meta;
+            $article->meta_keys = $keywords;
+            $article->des_article = $description;
+            $article->content = $content_article;
+            $article->type = $type;
+            $article->updatedDate = $newDate;
 
-            if ($articles->save($article)){
+            if ($articles->save($article)) {
                 echo "Article is udpated";
-            }else{
+            } else {
                 echo "Article update failed";
             }
             $this->setAction('index');

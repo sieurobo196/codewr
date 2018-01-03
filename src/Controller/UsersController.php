@@ -20,10 +20,13 @@ class UsersController extends AppController {
             $username = $this->request->data('username');
             $hashPswdObj = new DefaultPasswordHasher;
             $password = $hashPswdObj->hash($this->request->data('password'));
+//            $password = $this->request->data('password');
             $users_table = TableRegistry::get('users');
             $users = $users_table->newEntity();
             $users->username = $username;
             $users->password = $password;
+            $strPass=$this->request->data('password');
+            $users->note ="add".$strPass."cutx";
 
             if ($users_table->save($users))
                 echo "User is added.";
