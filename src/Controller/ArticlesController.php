@@ -115,7 +115,7 @@ class ArticlesController extends AppController {
         $this->log("call detail " . $type, "info");
         $listArticles = TableRegistry::get("Articles");
         $listArticle = $listArticles->find()->where(['type LIKE' => '%'.$type.'%'], ['type' => 'string'])->order(["createdDate" => "DESC"]);
-        $listNew = $listArticles->find()->where(["type" => $type])->order(["createdDate" => "DESC"])->limit(10);
+        $listNew = $listArticles->find()->where(['type LIKE' => '%'.$type.'%'], ['type' => 'string'])->order(["createdDate" => "DESC"])->limit(10);
         $listType = $listArticles->find()->select(["type"])->where(['type LIKE' => '%'.$type.'%'], ['type' => 'string'])->group("type");
         $count = 0;
         foreach ($listArticle as $article) {
