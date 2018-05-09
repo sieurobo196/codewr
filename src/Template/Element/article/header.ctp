@@ -28,19 +28,10 @@ $this->layout = false;
         <!-- //font-awesome icons -->
         <!-- js -->
         <script src="<?php echo $this->request->webroot . "js" ?>/jquery-1.11.1.min.js"></script>
-        <script type="text/javascript" src="<?php echo $this->request->webroot . "js" ?>/jquery.marquee.min.js"></script>
         <!-- js -->
         <!-- pop-up -->
-        <link href="<?php echo $this->request->webroot . "css/" ?>/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
-        <!-- //pop-up -->
-        <!-- left-chart -->
-        <script src="<?php echo $this->request->webroot . "js" ?>/jquery.flot.min.js" type="text/javascript"></script> 
-        <script src="<?php echo $this->request->webroot . "js" ?>/jquery.flot.animator.min.js" type="text/javascript"></script>
-        <!-- //left-chart -->
+        <link href="<?php echo $this->request->webroot . "css/" ?>/popuo-box.css" rel="stylesheet" type="text/css" media="all" />        
         <link href="//fonts.googleapis.com/css?family=Muli:300,300i,400,400i" rel="stylesheet">
-        <!-- start-smoth-scrolling -->
-        <script type="text/javascript" src="<?php echo $this->request->webroot . "js" ?>/move-top.js"></script>
-        <script type="text/javascript" src="<?php echo $this->request->webroot . "js" ?>/easing.js"></script>
     </head>
 
     <body>

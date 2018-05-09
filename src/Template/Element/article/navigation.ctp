@@ -15,14 +15,22 @@
                 <nav class="wthree_nav">
                     <ul class="nav navbar-nav nav_1">
                         <li class="<?php echo $activeMenu == 'index' ? 'act' : ''; ?>">
-                            <a href="<?php echo $this->Url->build(["controller" => "Articles", "action" => "index"]) ?>">
+                            <a href="<?php echo $this->Url->build(["controller" => "Articles", "action" => "index"]); ?>">
                                 Home</a></li>
-                        <?php foreach ($listType as $rowType): ?>
-                                <li class="<?php echo $activeMenu == $rowType->type ? 'act' : ''; ?>">
-                                <a href="<?php echo $this->Url->build(["controller" => "Articles", "action" => "detail", $rowType->type]) ?>">
-                                    <?php echo $rowType->type; ?></a></li>
-                        <?php endforeach;
-                        ?>
+                        <li class="<?php echo $activeMenu == 'JAVA' ? 'act' : ''; ?>">
+                            <a href="<?php echo $this->Url->build(["controller" => "Articles", "action" => "detail", "JAVA"]); ?>">
+                                JAVA</a></li>
+                        <li class="<?php echo $activeMenu == 'NODEJS' ? 'act' : ''; ?>">
+                            <a href="<?php echo $this->Url->build(["controller" => "Articles", "action" => "detail", "NODEJS"]); ?>">
+                                NODEJS</a></li>
+                        <li class="<?php echo $activeMenu == 'PHP' ? 'act' : ''; ?>">
+                            <a href="<?php echo $this->Url->build(["controller" => "Articles", "action" => "detail", "PHP"]); ?>">
+                                PHP</a></li>
+                        <li class="<?php echo $activeMenu == 'MQTT' ? 'act' : ''; ?>">
+                            <a href="<?php echo $this->Url->build(["controller" => "Articles", "action" => "detail", "MQTT"]); ?>">
+                                MQTT</a></li>
+
+
                     </ul>
                 </nav>
             </div>
