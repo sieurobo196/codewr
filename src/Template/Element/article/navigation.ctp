@@ -20,6 +20,9 @@
                         <li class="<?php echo $activeMenu == 'JAVA' ? 'act' : ''; ?>">
                             <a href="<?php echo $this->Url->build(["controller" => "Articles", "action" => "detail", "JAVA"]); ?>">
                                 JAVA</a></li>
+                        <li class="<?php echo $activeMenu == 'Spring' ? 'act' : ''; ?>">
+                            <a href="<?php echo $this->Url->build(["controller" => "Articles", "action" => "detail", "Spring"]); ?>">
+                                Spring</a></li>
                         <li class="<?php echo $activeMenu == 'NODEJS' ? 'act' : ''; ?>">
                             <a href="<?php echo $this->Url->build(["controller" => "Articles", "action" => "detail", "NODEJS"]); ?>">
                                 NODEJS</a></li>
@@ -29,7 +32,12 @@
                         <li class="<?php echo $activeMenu == 'MQTT' ? 'act' : ''; ?>">
                             <a href="<?php echo $this->Url->build(["controller" => "Articles", "action" => "detail", "MQTT"]); ?>">
                                 MQTT</a></li>
-
+                        <li class="<?php echo $activeMenu == 'JAVASCRIPT' ? 'act' : ''; ?>">
+                            <a href="<?php echo $this->Url->build(["controller" => "Articles", "action" => "detail", "JAVASCRIPT"]); ?>">
+                                JAVASCRIPT</a></li>
+                        <li class="<?php echo $activeMenu == 'contact' ? 'act' : ''; ?>">
+                            <a href="<?php echo $this->Url->build(["controller" => "Articles", "action" => "contact"]); ?>">
+                                Contact</a></li>
 
                     </ul>
                 </nav>

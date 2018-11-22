@@ -37,10 +37,10 @@ html[xmlns] .slides {display: block;}
 /* FlexSlider Default Theme
 *********************************/
 .flexslider {
-	border: 0px;
-	position: relative;
-	zoom: 1;
-	overflow: hidden;
+    border: 0px;
+    position: relative;
+    zoom: 1;
+    overflow: hidden;
 }
 .flex-viewport {max-height: 2000px; -webkit-transition: all 1s ease; -moz-transition: all 1s ease; transition: all 1s ease;}
 .loading .flex-viewport {max-height: 300px;}
@@ -52,7 +52,7 @@ html[xmlns] .slides {display: block;}
 /* Direction Nav */
 .flex-direction-nav {*height: 0;}
 .flex-direction-nav a {
-	width: 25px;
+    width: 25px;
     height: 15px;
     margin: 0;
     display: block;
@@ -66,7 +66,7 @@ html[xmlns] .slides {display: block;}
     -webkit-transition: all .3s ease;
 }
 .flex-direction-nav .flex-next {
-	background:none;
+    background:none;
     right:0%;
     top: 0%;
 }
@@ -77,29 +77,29 @@ html[xmlns] .slides {display: block;}
 .flex-direction-nav .flex-disabled {opacity: .3!important; filter:alpha(opacity=30); cursor: default;}
 /* Control Nav */
 .flex-control-nav {
-	display: block;
+    display: block;
     position: absolute;
     right: 10%;
     margin-left: 0px;
     top: 10%;
 }
 .flex-control-nav li {
-	margin: 0 5px;
+    margin: 0 5px;
     display: inline-block;
     zoom: 1;
 }
 .flex-control-paging li a {
-	width: 10px;
+    width: 10px;
     height: 10px;
     display: block;
     background: none;
     cursor: pointer;
     text-indent: -9999px;
     border:2px solid #7C7C7C;
-	border-radius:20px;
+    border-radius:20px;
 }
 .flex-control-paging li a.flex-active { 
-	background:#EC600B;
+    background:#EC600B;
     cursor: default;
     border: 2px solid #EC600B;
 }
@@ -109,35 +109,37 @@ html[xmlns] .slides {display: block;}
 .flex-control-thumbs img:hover {opacity: 1;}
 .flex-control-thumbs .flex-active {opacity: 1; cursor: default;}
 @media screen and (max-width:1440px) {
-	
+
 }
 @media screen and (max-width: 1366px){
-	
+
 }
 @media screen and (max-width: 1080px){
-	
+
 }
 @media screen and (max-width:991px) {
-	
+
 }
 @media screen and (max-width:667px) {
-	
+}
+
 @media screen and (max-width: 600px) {
-	
+
 }
 @media screen and (max-width: 480px) {
-	section.slider {
-		padding-top: 0%;
-	}
-	.flexslider {
-		padding: 0px 0px;
-	}
+    section.slider {
+        padding-top: 0%;
+    }
+    .flexslider {
+        padding: 0px 0px;
+    }
 }
 @media screen and (max-width: 414px){
-	
+}
+
 @media screen and (max-width: 320px) {
-	section.slider {
-		padding-top: 0%;
-	}
-	
+    section.slider {
+        padding-top: 0%;
+    }
+
 }

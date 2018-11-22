@@ -14,7 +14,7 @@ class ArticlesController extends AppController {
 
     public function beforeFilter(Event $event) {
         parent::beforeFilter($event);
-        $this->Auth->allow(["index", "view", "detail"]);
+        $this->Auth->allow(["index", "view", "detail","contact"]);
     }
 
     public function add() {
@@ -53,7 +53,7 @@ class ArticlesController extends AppController {
     }
 
     public function index() {
-        $this->log("call home", "info");
+        $this->log("call home ", "info");
         $listArticles = TableRegistry::get("Articles");
         $query = $listArticles->find()->order(["createdDate" => "DESC"]);
         $listNew = $listArticles->find()->order(["createdDate" => "DESC"])->limit(20);
@@ -67,6 +67,7 @@ class ArticlesController extends AppController {
         $this->set("keys", "PHP ,CakePHP");
         $this->set("des", "CodeWR Web Example");
         $this->set("activeMenu", "index");
+        $this->log("end call home ", "info");
     }
 
     public function view($type, $mapUrl) {
@@ -183,7 +184,13 @@ class ArticlesController extends AppController {
             $this->set("id", $id);
         }
     }
-
+    
+    public function contact(){
+        $this->set("title", "Contact");
+        $this->set("keys", "PHP ,CakePHP");
+        $this->set("des", "CodeWR Web Example");
+        $this->set("activeMenu", "contact");
+    }
 }
 
 ?>

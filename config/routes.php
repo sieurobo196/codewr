@@ -55,6 +55,7 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/view/*', ['controller' => 'Articles', 'action' => 'view']);
     $routes->connect('/add', ['controller' => 'Articles', 'action' => 'add']);
     $routes->connect('/edit/*', ['controller' => 'Articles', 'action' => 'edit']);
+    $routes->connect('/contact', ['controller' => 'Articles', 'action' => 'contact']);
     
     // example working with database
     $routes->connect('/users/add', ['controller' => 'Users', 'action' => 'add']);

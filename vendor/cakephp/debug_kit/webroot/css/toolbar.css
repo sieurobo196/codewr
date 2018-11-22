@@ -64,6 +64,7 @@ p {
 	bottom: 0;
 	left: 0;
 	right: 0;
+	display:none;
 }
 .toolbar.open {
 	border-radius: 0;
