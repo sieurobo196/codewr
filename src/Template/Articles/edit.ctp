@@ -9,6 +9,7 @@
     echo $this->Form->input("type", ['value' => $type]);
     echo $this->Form->input("metades", ['value' => $meta_des]);
     echo $this->Form->input("metakey", ['value' => $meta_keys]);
+    echo $this->Form->input("isSubmit", ['value' => $isSubmit]);
     echo $this->Form->input("content", array("type" => "textarea", "id" => "content_article", 'value' => $content));
     echo $this->Form->button('Submit');
     ?>

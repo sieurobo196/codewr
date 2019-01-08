@@ -13,16 +13,32 @@
                 <?php foreach ($listType as $rowType): ?>
                     <div class="list-article-details">
 
-                        <div class="row article-type"><?php echo $rowType->type;?></div>
+                        <div class="row article-type"><?php echo $rowType->type; ?></div>
                         <div class="row article-block">
 
                             <?php
                             foreach ($results as $row):
                                 if ($row->type == $rowType->type) {
-                                    ?>
-                                    <div class="col-md-6  article-title">-<a href="<?php echo $this->Url->build(["controller" => "Articles", "action" => "view", $row->type, $row->map_url]); ?>" />
-                                        <?php echo $row->title ?> </a></div>
-                                    <?php
+                                    if ($row->isSubmit == 0) {
+                                        ?>
+
+                                        <div class="col-md-6  article-title">
+                                            -<a href="<?php echo $this->Url->build(["controller" => "Articles", "action" => "view", $row->type, $row->map_url]); ?>" />
+                                            <?php echo $row->title ?> </a> 
+
+                                        </div>
+                                        <?php
+                                    } else {
+                                        if ($Auth->user()) {
+                                            ?>
+                                            <div class="col-md-6  article-title">
+                                                -<a href="<?php echo $this->Url->build(["controller" => "Articles", "action" => "view", $row->type, $row->map_url]); ?>" />
+                                                <?php echo $row->title ?> </a> - <span style="color: red;">unSubmit</span>
+
+                                            </div>
+                                            <?php
+                                        }
+                                    }
                                 }
                             endforeach;
                             ?>
@@ -41,13 +57,29 @@
                     <div class="articles-news-title">New</div>
 
                     <div class="articles-news">
-                        <?php foreach ($listArticleNew as $row): ?>
-                            <div class="col-md-12 article-line">
-                                <div class="col-md-2 list-article-news"><?php echo $row->view; ?></div>
-                                <div class="col-md-10"><a href="<?php echo $this->Url->build(["controller" => "Articles", "action" => "view", $row->type, $row->map_url]); ?>">
-                                        <?php echo $row->title ?> </a></div>
-                            </div>
-                        <?php endforeach;
+                        <?php
+                        foreach ($listArticleNew as $row):
+                            if ($row->isSubmit == 0) {
+                                ?>
+                                <div class="col-md-12 article-line">
+                                    <!--<div class="col-md-2 list-article-news"><?php echo $row->view; ?></div>-->
+                                    <div class="col-md-10"><a href="<?php echo $this->Url->build(["controller" => "Articles", "action" => "view", $row->type, $row->map_url]); ?>">
+                                            <?php echo $row->title ?> </a></div>
+                                </div>
+                                <?php
+                            } else {
+                                if ($Auth->user()) {
+                                    ?>
+                                    <div class="col-md-12 article-line">
+                                                <!--<div class="col-md-2 list-article-news"><?php echo $row->view; ?></div>-->
+                                        <div class="col-md-10"><a href="<?php echo $this->Url->build(["controller" => "Articles", "action" => "view", $row->type, $row->map_url]); ?>">
+                                                <?php echo $row->title ?> </a>- <span style="color: red;">unSubmit</span>
+                                        </div>
+                                    </div>
+                                    <?php
+                                }
+                            }
+                        endforeach;
                         ?>
 
                     </div>

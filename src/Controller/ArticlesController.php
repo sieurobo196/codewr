@@ -14,7 +14,7 @@ class ArticlesController extends AppController {
 
     public function beforeFilter(Event $event) {
         parent::beforeFilter($event);
-        $this->Auth->allow(["index", "view", "detail","contact"]);
+        $this->Auth->allow(["index", "view", "detail", "contact"]);
     }
 
     public function add() {
@@ -40,6 +40,7 @@ class ArticlesController extends AppController {
                 $article->type = $type;
                 $article->content = $content_article;
                 $article->createdDate = $newDate;
+                $article->isSubmit = 1;
                 if ($articles_table->save($article)) {
                     $this->log("added " . $title, "info");
                     $this->redirect(
@@ -71,7 +72,7 @@ class ArticlesController extends AppController {
     }
 
     public function view($type, $mapUrl) {
-        $this->log("call view " . $type ."/". $mapUrl, "info");
+        $this->log("call view " . $type . "/" . $mapUrl, "info");
         $activeMenu = $type == null ? "index" : $type;
         $this->set("activeMenu", $activeMenu);
         $articles = TableRegistry::get("Articles");
@@ -99,25 +100,25 @@ class ArticlesController extends AppController {
             $this->set("des", $article->meta_des);
             $this->set("id", $article->id);
             $this->set("activeMenu", $type);
-            $view = $article->view;
-            $view++;
-            $article->view = $view;
-            $newDate = date("Y-m-d H:i:s");
-            $article->updatedDate = $newDate;
-            if ($articles->save($article)) {
-                
-            } else {
-                $this->log("call view fail" . $type . $mapUrl, "error");
-            }
+//            $view = $article->view;
+//            $view++;
+//            $article->view = $view;
+//            $newDate = date("Y-m-d H:i:s");
+//            $article->updatedDate = $newDate;
+//            if ($articles->save($article)) {
+//                
+//            } else {
+//                $this->log("call view fail" . $type . $mapUrl, "error");
+//            }
         }
     }
 
     public function detail($type) {
         $this->log("call detail " . $type, "info");
         $listArticles = TableRegistry::get("Articles");
-        $listArticle = $listArticles->find()->where(['type LIKE' => '%'.$type.'%'], ['type' => 'string'])->order(["createdDate" => "DESC"]);
-        $listNew = $listArticles->find()->where(['type LIKE' => '%'.$type.'%'], ['type' => 'string'])->order(["createdDate" => "DESC"])->limit(10);
-        $listType = $listArticles->find()->select(["type"])->where(['type LIKE' => '%'.$type.'%'], ['type' => 'string'])->group("type");
+        $listArticle = $listArticles->find()->where(['type LIKE' => '%' . $type . '%'], ['type' => 'string'])->order(["createdDate" => "DESC"]);
+        $listNew = $listArticles->find()->where(['type LIKE' => '%' . $type . '%'], ['type' => 'string'])->order(["createdDate" => "DESC"])->limit(10);
+        $listType = $listArticles->find()->select(["type"])->where(['type LIKE' => '%' . $type . '%'], ['type' => 'string'])->group("type");
         $count = 0;
         foreach ($listArticle as $article) {
             $count++;
@@ -147,8 +148,11 @@ class ArticlesController extends AppController {
             $keywords = $this->request->data("metakey");
             $content_article = $this->request->data("content");
             $type = $this->request->data("type");
+            $isSubmit = $this->request->data("isSubmit");
             $newDate = date("Y-m-d H:i:s");
-            
+            if ($isSubmit == '') {
+                $isSubmit = 1;
+            }
             if ($title == '' || $mapUrl == '' || $type == '' || $content_article == '') {
                 $this->log("error data empty", "error");
             } else {
@@ -161,6 +165,7 @@ class ArticlesController extends AppController {
                 $article->content = $content_article;
                 $article->type = $type;
                 $article->updatedDate = $newDate;
+                $article->isSubmit = $isSubmit;
 
                 if ($articles->save($article)) {
                     $this->log("udpated " . $mapUrl, "info");
@@ -181,16 +186,18 @@ class ArticlesController extends AppController {
             $this->set("des_article", $article->des_article);
             $this->set("content", $article->content);
             $this->set("type", $article->type);
+            $this->set("isSubmit", $article->isSubmit);
             $this->set("id", $id);
         }
     }
-    
-    public function contact(){
+
+    public function contact() {
         $this->set("title", "Contact");
         $this->set("keys", "PHP ,CakePHP");
         $this->set("des", "CodeWR Web Example");
         $this->set("activeMenu", "contact");
     }
+
 }
 
 ?>

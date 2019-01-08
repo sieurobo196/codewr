@@ -26,7 +26,7 @@
 
 
         </ul>
-        <p>© 2017  | Design by <a href="<?php echo $this->Url->build(["controller" => "Articles", "action" => "index"]) ?>">Codewr</a></p>
+        <p>© 2018  | <a href="<?php echo $this->Url->build(["controller" => "Articles", "action" => "index"]) ?>">Codewr.com</a></p>
     </div>
 </div>
 <!-- //footer -->
