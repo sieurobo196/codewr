@@ -31,6 +31,7 @@ $this->layout = false;
         <!-- pop-up -->
         <link href="<?php echo $this->request->webroot . "css/" ?>/popuo-box.css" rel="stylesheet" type="text/css" media="all" />        
         <link href="//fonts.googleapis.com/css?family=Muli:300,300i,400,400i" rel="stylesheet">
+        <!--google ads-->
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <script>
             (adsbygoogle = window.adsbygoogle || []).push({
@@ -38,6 +39,8 @@ $this->layout = false;
                 enable_page_level_ads: true
             });
         </script>
+        <!--xac minh quyen so huu-->
+        <meta name="google-site-verification" content="g1-ueCEh--TsLWGxB4-awU9JeOPpBOaYBzGh0TECAtM" />
     </head>
 
     <body>

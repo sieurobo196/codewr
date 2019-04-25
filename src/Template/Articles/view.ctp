@@ -86,7 +86,14 @@
                     </div>
                 </div>
                 <div class="agileinfo_chat">
-                    <!--<img src="<?php echo $this->request->webroot . "images" ?>/13.jpg" alt=" " class="img-responsive" />-->
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({
+                            google_ad_client: "ca-pub-7326494175928694",
+                            enable_page_level_ads: true
+                        });
+                    </script>
+                                        <!--<img src="<?php echo $this->request->webroot . "images" ?>/13.jpg" alt=" " class="img-responsive" />-->
                 </div>
 
             </div>

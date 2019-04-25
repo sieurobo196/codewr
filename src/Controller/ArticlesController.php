@@ -56,11 +56,11 @@ class ArticlesController extends AppController {
     public function index() {
         $this->log("call home ", "info");
         $listArticles = TableRegistry::get("Articles");
-        $query = $listArticles->find()->order(["createdDate" => "DESC"]);
-        $listNew = $listArticles->find()->order(["createdDate" => "DESC"])->limit(20);
+//        $query = $listArticles->find()->order(["createdDate" => "DESC"]);
+        $listNew = $listArticles->find()->where(["isSubmit" => 0])->order(["createdDate" => "DESC"])->limit(20);
         $listType = $listArticles->find()->select(["type"])->group("type");
 //        $this->log($listType,"info");
-        $this->set("results", $query);
+//        $this->set("results", $query);
         $this->set("activeMenu", "index");
         $this->set("listType", $listType);
         $this->set("listArticleNew", $listNew);
@@ -116,7 +116,7 @@ class ArticlesController extends AppController {
     public function detail($type) {
         $this->log("call detail " . $type, "info");
         $listArticles = TableRegistry::get("Articles");
-        $listArticle = $listArticles->find()->where(['type LIKE' => '%' . $type . '%'], ['type' => 'string'])->order(["createdDate" => "DESC"]);
+        $listArticle = $listArticles->find()->where(['type LIKE' => '%' . $type . '%'], ['type' => 'string']);
         $listNew = $listArticles->find()->where(['type LIKE' => '%' . $type . '%'], ['type' => 'string'])->order(["createdDate" => "DESC"])->limit(10);
         $listType = $listArticles->find()->select(["type"])->where(['type LIKE' => '%' . $type . '%'], ['type' => 'string'])->group("type");
         $count = 0;
