@@ -29,6 +29,7 @@ and open the template in the editor.
 .articles-news-title {
     font-size: 30px;
     font-family: sans-serif;
+    padding-left: 15px;
 }
 .col-md-12.article-line {
     padding: 5px 0;
